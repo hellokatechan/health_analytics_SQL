@@ -10,6 +10,11 @@ We’ve been asked to quickly debug their SQL script and use the resulting query
 Before we start digging into the SQL script - let’s cover the business questions that we need to help the GM answer!
 
 * How many unique users exist in the logs dataset?
+```
+SELECT COUNT(DISTINCT id)
+FROM health.user_logs;
+
+```
 * How many total measurements do we have per user on average?
 * What about the median number of measurements per user?
 * How many users have 3 or more measurements?
