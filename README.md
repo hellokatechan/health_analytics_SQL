@@ -13,12 +13,25 @@ Before we start digging into the SQL script - let’s cover the business questio
 ```
 SELECT COUNT(DISTINCT id)
 FROM health.user_logs;
-
 ```
 * How many total measurements do we have per user on average?
 * What about the median number of measurements per user?
 * How many users have 3 or more measurements?
-* How many users have 1,000 or more measurements?
+
+```SELECT COUNT(*), user_logs.id
+FROM health.user_logs
+GROUP BY user_logs.id
+HAVING COUNT(*) >= 3;
+```
+
+* How many users have 1,000 or more measurements? 5
+```
+SELECT COUNT(*), user_logs.id
+FROM health.user_logs
+GROUP BY user_logs.id
+HAVING COUNT(*) > 1000;
+
+```
 * Looking at the logs data - what is the number and percentage of the active user base who:
 
 * Have logged blood glucose measurements?
